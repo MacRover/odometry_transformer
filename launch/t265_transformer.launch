@@ -5,8 +5,8 @@
     <arg name="source_odometry" value="/t265/odom/sample" />
     <arg name="target_odometry" value="/rs_t265_odom" />
     <arg name="lookup_tf" value="false" />
-    <arg name="q_TS" value="[0, 0.3826834, 0, 0.9238796]"/>
-    <arg name="T_r_TS" value="[1.0, 0.0, 0.0]"/>
+    <arg name="q_TS" value="[0.0, 0.0, 0.0, 1.0]"/>
+    <arg name="T_r_TS" value="[-0.27, 0.0, 0.32]"/>
   </include>
 
  <node pkg="tf" type="static_transform_publisher" name="ekf_odom_to_t265_odom" args="0 0 0 0 0 0 /ekf_odom /t265_odom_frame 100"/> 
