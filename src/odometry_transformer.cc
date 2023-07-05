@@ -64,11 +64,11 @@ void OdometryTransformer::getRosParameters() {
 
     // Broadcast TF if calibration is coming from parameter server.
     tf_static_br_.emplace();
-    broadcastCalibration();
+    //broadcastCalibration();
 
     // Enable dynamic reconfigure if calibration is coming from parameter
     // server.
-    initializeDynamicReconfigure();
+    //initializeDynamicReconfigure();
   }
   ROS_INFO_STREAM(
       "T_r_TS [x, y, z]: " << T_ST_.inverse().translation().transpose());
