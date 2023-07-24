@@ -1,12 +1,16 @@
 <launch>
+  <arg name="front" default="false" />
+
   <include file="$(find odometry_transformer)/launch/odometry_transformer.launch">
     <arg name="source_frame" value="t265_odom_frame" />
     <arg name="target_frame" value="base_footprint" />
     <arg name="source_odometry" value="/t265/odom/sample" />
     <arg name="target_odometry" value="/rs_t265_odom" />
     <arg name="lookup_tf" value="false" />
-    <arg name="q_TS" value="[0.0, 0.0, 0.0, 1.0]"/>
-    <arg name="T_r_TS" value="[-0.27, 0.0, 0.32]"/>
+    <arg if="$(arg front)" name="q_TS" value="[0.0, 0.0, 0.0, 1.0]"/>
+    <arg if="$(arg front)" name="T_r_TS" value="[-0.27, 0.0, 0.32]"/>
+    <arg unless="$(arg front)" name="q_TS" value="[0.0, 0.0, 0.0, 1.0]"/>
+    <arg unless="$(arg front)" name="T_r_TS" value="[-0.38, 0.0, 0.345]"/>
   </include>
 
  <node pkg="tf" type="static_transform_publisher" name="ekf_odom_to_t265_odom" args="0 0 0 0 0 0 /ekf_odom /t265_odom_frame 100"/> 
